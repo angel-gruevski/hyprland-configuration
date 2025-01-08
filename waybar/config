@@ -1,0 +1,194 @@
+{
+    "layer": "top",
+    "position": "top",
+    "modules-left": [
+        "cpu",
+        "memory",
+        "battery",
+        "pulseaudio",
+	"temperature",
+	"backlight",
+	"custom/power_consumption",
+        "custom/cap-left"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "custom/cap-right",
+        "custom/exchange",
+        "network",
+        "clock",
+        "keyboard-state",
+        "custom/offswitch"
+    ],
+    "hyprland/window": {},
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-good": "", // An empty format will hide the module
+        "format-full": "",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "clock": {
+        "format": " {:%a %b %d %H:%M}",
+        "tooltip": true,
+        "min-length": 18,
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "custom/offswitch": {
+        "tooltip": false,
+        "format": "",
+        "interval": "once",
+        "on-click": "systemctl poweroff"
+    },
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": " {ipaddr}",
+        "format-linked": " {ifname}",
+        "format-disconnected": " Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip": false,
+        "max-length": 20,
+        "min-length": 14
+    },
+    "pulseaudio": {
+        "tooltip": false,
+        "min-length": 5,
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-muted": "MUTE",
+        "format-icons": {
+            "headphone": "",
+            "headset": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "pamixer -t",
+        "on-click-right": "pavucontrol"
+    },
+    "cpu": {
+        "interval": 4,
+        "min-length": 6,
+        "format": "{usage}% ",
+        "tooltip": false,
+        "states": {
+            "critical": 90
+        }
+    },
+    "temperature": {
+        "tooltip": false,
+        "min-length": 6,
+        "critical-threshold": 90,
+        "format": "{icon} {temperatureC}°C",
+        "format-critical": "{icon} {temperatureC}°C",
+        "format-icons": {
+            "default": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+        }
+    },
+    "memory": {
+        "tooltip": false,
+        "format": " {percentage}%",
+        "states": {
+            "critical": 90,
+        },
+        "min-length": 5
+    },
+    "disk": {
+        "tooltip": false,
+        "path": "/",
+        "interval": 60,
+        "min-length": 5,
+        "format": " {percentage_used}%",
+        "states": {
+            "critical": 90,
+        }
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "sway/workspaces": {
+        "tooltip": false,
+        "disable-scroll": true
+    },
+    "custom/cap-left": {
+        "tooltip": false,
+        "format": ""
+    },
+    "custom/cap-right": {
+        "tooltip": false,
+        "format": ""
+    },
+    "custom/exchange": {
+        "format": "{}",
+        "return-type": "json",
+        "interval": 86400,
+        "exec": "$HOME/.config/waybar/scripts/exchange.sh"
+    },
+    "custom/headphones_battery": {
+        "format": "{}",
+        "return-type": "json",
+        "interval": 1800,
+        "exec": "$HOME/.config/waybar/scripts/headphones_battery.sh"
+    },
+    "custom/power_consumption": {
+    	"format": "{}",
+	"return-type": "json",
+	"interval": 60,
+	"exec": "$HOME/.config/waybar/scripts/power_consumption.sh"
+    },
+    "custom/notification": {
+        "tooltip": false,
+	"format": "{icon}",
+	"format-icons": {
+	    "notification": "<span foreground='red'><sup></sup></span>",
+	    "none": "",
+	    "dnd-notification": "<span foreground='red'><sup></sup></span>",
+	    "dnd-none": "",
+	    "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+	    "inhibited-none": "",
+	    "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+	    "dnd-inhibited-none": ""
+	},
+	"return-type": "json",
+	"exec-if": "which swaync-client",
+	"exec": "swaync-client -swb",
+	"on-click": "swaync-client -t -sw",
+	"on-click-right": "swaync-client -d -sw",
+	"escape": true
+    },
+}
