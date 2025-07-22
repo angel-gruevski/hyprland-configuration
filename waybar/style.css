@@ -25,9 +25,11 @@
 
 #waybar {
     background: transparent;
-    font-family: JetBrainsMono;
-    font-size: large;
+    /* font-family: Sligoil; */
+    font-family: MonofurNerdFont;
+    font-size: 21px;
     color: @fgcolor;
+    min-height: 34px;
 }
 
 #custom-notification {
@@ -71,6 +73,8 @@
     padding-left: 10px;
 }
 
+#custom-weather,
+#custom-batterypower,
 #custom-headphones_battery,
 #custom-exchange,
 #cpu,
@@ -83,6 +87,8 @@
 #tray,
 #keyboard-state,
 #backlight,
+#upower,
+#custom-powerprofile,
 #network {
     background: @bgcolor;
     padding-left: 10px;

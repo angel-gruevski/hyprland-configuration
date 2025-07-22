@@ -1,8 +1,8 @@
 #!/bin/bash
  
-VOLUME_SINK=59
+VOLUME_SINK=34
 
-current_volume=$(wpctl get-volume 59 | awk '{print $2}')
+current_volume=$(wpctl get-volume 34 | awk '{print $2}')
 new_volume=$(echo $current_volume + ".10" | bc)
 
 if (( $(echo "$new_volume <= 1.0" | bc -l) )); then
